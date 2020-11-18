@@ -1,24 +1,238 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Leader Board View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeaderBoardVC" id="BYZ-38-t0r" customClass="LeaderBoardViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4G-sv-C78">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEADERBOARD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfc-yf-b6I">
+                                        <rect key="frame" x="16" y="10.5" width="272" height="29.5"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peV-7u-HpE">
+                                        <rect key="frame" x="294" y="12" width="104" height="26"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="104" id="XVH-D7-RcB"/>
+                                            <constraint firstAttribute="height" constant="26" id="oZl-8h-RRZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="16"/>
+                                        <state key="normal" title=" SORT BY" image="sortBy">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="sortBYAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dLA-bN-lMR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="peV-7u-HpE" firstAttribute="leading" secondItem="Lfc-yf-b6I" secondAttribute="trailing" constant="6" id="1z4-Ia-x8p"/>
+                                    <constraint firstItem="Lfc-yf-b6I" firstAttribute="leading" secondItem="a4G-sv-C78" secondAttribute="leading" constant="16" id="GV3-zG-4Bj"/>
+                                    <constraint firstAttribute="trailing" secondItem="peV-7u-HpE" secondAttribute="trailing" constant="16" id="jxj-9w-cjq"/>
+                                    <constraint firstItem="Lfc-yf-b6I" firstAttribute="centerY" secondItem="a4G-sv-C78" secondAttribute="centerY" id="oRQ-yJ-oUA"/>
+                                    <constraint firstAttribute="height" constant="50" id="srh-cp-5K9"/>
+                                    <constraint firstItem="peV-7u-HpE" firstAttribute="centerY" secondItem="a4G-sv-C78" secondAttribute="centerY" id="ycJ-j9-0MU"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="aaZ-ig-6GY">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IES-YC-TiP">
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="kbq-Ww-kdH"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="j3K-38-Nc8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="aaZ-ig-6GY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9zA-wp-V2K"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IES-YC-TiP" secondAttribute="trailing" id="BRk-zg-FSh"/>
+                            <constraint firstItem="a4G-sv-C78" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="RbZ-wk-BJ6"/>
+                            <constraint firstItem="a4G-sv-C78" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uhy-DS-kF7"/>
+                            <constraint firstItem="aaZ-ig-6GY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ff3-Uq-8Sh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IES-YC-TiP" secondAttribute="bottom" id="gYz-ix-dia"/>
+                            <constraint firstItem="IES-YC-TiP" firstAttribute="top" secondItem="a4G-sv-C78" secondAttribute="bottom" id="q71-1j-AMK"/>
+                            <constraint firstItem="IES-YC-TiP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zUQ-hh-IVw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="a4G-sv-C78" secondAttribute="trailing" id="zkE-cV-w2f"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="aaZ-ig-6GY" id="BvI-Xc-PdH"/>
+                        <outlet property="leaderboardTableview" destination="IES-YC-TiP" id="a4J-vh-yR8"/>
+                        <outlet property="sortByButton" destination="peV-7u-HpE" id="06B-2Y-Mar"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-236" y="76"/>
+        </scene>
+        <!--Sort By View Controller-->
+        <scene sceneID="jl9-Ed-4d6">
+            <objects>
+                <viewController storyboardIdentifier="SortByViewController" id="1Vh-Qp-PsT" customClass="SortByViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3wb-UY-lwi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXo-jx-dDn">
+                                <rect key="frame" x="308" y="60" width="90" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="GKx-Tf-xTv"/>
+                                </constraints>
+                                <state key="normal" title="Dismiss">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissButtonTapped:" destination="1Vh-Qp-PsT" eventType="touchUpInside" id="Nhi-pl-b5a"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="E1c-vr-Z8s">
+                                <rect key="frame" x="16" y="102" width="382" height="158"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fGz-Vp-20V">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="32"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check-mark" translatesAutoresizingMaskIntoConstraints="NO" id="wH5-pv-jse">
+                                                <rect key="frame" x="0.0" y="3" width="26" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="26" id="5pQ-zu-evh"/>
+                                                    <constraint firstAttribute="height" constant="26" id="EuB-Rf-zrL"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sj-ta-Env">
+                                                <rect key="frame" x="36" y="0.0" width="346" height="32"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
+                                                <state key="normal" title="TOTAL SALES">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sortBYAction:" destination="1Vh-Qp-PsT" eventType="touchUpInside" id="1bC-ei-v1S"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tLY-rL-dLb">
+                                        <rect key="frame" x="0.0" y="42" width="382" height="32"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JLG-tx-oUh">
+                                                <rect key="frame" x="0.0" y="3" width="26" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="26" id="KAJ-Sa-G1Q"/>
+                                                    <constraint firstAttribute="height" constant="26" id="fo9-u4-zmt"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMa-aT-NuK">
+                                                <rect key="frame" x="36" y="0.0" width="346" height="32"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
+                                                <state key="normal" title="ADD TO CART">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sortBYAction:" destination="1Vh-Qp-PsT" eventType="touchUpInside" id="gMX-3J-jmn"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qLS-C2-q7B">
+                                        <rect key="frame" x="0.0" y="84" width="382" height="32"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VeP-s0-L7e">
+                                                <rect key="frame" x="0.0" y="3" width="26" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="26" id="Zwd-Xe-DY6"/>
+                                                    <constraint firstAttribute="height" constant="26" id="zZm-EO-nJN"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgG-eG-NX0">
+                                                <rect key="frame" x="36" y="0.0" width="346" height="32"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
+                                                <state key="normal" title="DOWNLOADS">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sortBYAction:" destination="1Vh-Qp-PsT" eventType="touchUpInside" id="zga-dc-FsT"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xle-k3-IQK">
+                                        <rect key="frame" x="0.0" y="126" width="382" height="32"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6O8-kh-lk6">
+                                                <rect key="frame" x="0.0" y="3" width="26" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="26" id="XGz-sD-2Nc"/>
+                                                    <constraint firstAttribute="height" constant="26" id="mQj-DP-a0j"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Al-Tu-r5w">
+                                                <rect key="frame" x="36" y="0.0" width="346" height="32"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
+                                                <state key="normal" title="USER SESSSIONS">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sortBYAction:" destination="1Vh-Qp-PsT" eventType="touchUpInside" id="6eS-hg-xpx"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Z43-lF-eZk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="E1c-vr-Z8s" firstAttribute="leading" secondItem="Z43-lF-eZk" secondAttribute="leading" constant="16" id="V32-gX-WAZ"/>
+                            <constraint firstItem="Z43-lF-eZk" firstAttribute="trailing" secondItem="CXo-jx-dDn" secondAttribute="trailing" constant="16" id="YZh-ev-z7Z"/>
+                            <constraint firstItem="E1c-vr-Z8s" firstAttribute="top" secondItem="CXo-jx-dDn" secondAttribute="bottom" constant="12" id="dqb-YL-Ky1"/>
+                            <constraint firstItem="Z43-lF-eZk" firstAttribute="trailing" secondItem="E1c-vr-Z8s" secondAttribute="trailing" constant="16" id="l2L-iU-YJe"/>
+                            <constraint firstItem="CXo-jx-dDn" firstAttribute="top" secondItem="Z43-lF-eZk" secondAttribute="top" constant="16" id="wui-Lp-iml"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tick1" destination="wH5-pv-jse" id="KyT-Vb-IpS"/>
+                        <outlet property="tick2" destination="JLG-tx-oUh" id="mMO-eB-YAV"/>
+                        <outlet property="tick3" destination="VeP-s0-L7e" id="TVS-z8-ETG"/>
+                        <outlet property="tick4" destination="6O8-kh-lk6" id="SqZ-D0-8Og"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="egx-IA-Yd4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="468.11594202898556" y="69.642857142857139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="check-mark" width="32" height="32"/>
+        <image name="sortBy" width="20" height="20"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
